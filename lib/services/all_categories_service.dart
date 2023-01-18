@@ -5,7 +5,7 @@ import 'package:store_app/helper/api.dart';
 class AllCategoriesService {
   Future<dynamic> getAllCateogries() async {
     Response response =
-        await Api().get(url: "https://fakestoreapi.com/products/categories");
+        await Api().get(url: "https://fakestoreapi.com/products/categories", token: '');
 
     List<dynamic> data = jsonDecode(response.body);
     return data;
