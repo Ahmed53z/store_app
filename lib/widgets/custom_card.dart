@@ -61,7 +61,7 @@ class CustomCard extends StatelessWidget {
                         ),
                         FavoriteButton(
                           isFavorite: true,
-                          iconDisabledColor: Colors.white,
+                          // iconDisabledColor: Colors.white,
                           valueChanged: (isFavorite) {
                             print('Is Favorite : $isFavorite');
                           },
