@@ -1,6 +1,8 @@
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 
 import '../models/product_model.dart';
+import '../screens/update_product_page.dart';
 
 class CustomCard extends StatelessWidget {
   CustomCard({
@@ -9,12 +11,13 @@ class CustomCard extends StatelessWidget {
   }) : super(key: key);
 
   ProductModel product;
+  bool _isFavorite = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: () {
-      //   Navigator.pushNamed(context, UpdateProductPage.id ,arguments: product);
-      // },
+      onTap: () {
+        Navigator.pushNamed(context, UpdateProductPage.id ,arguments: product);
+      },
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -33,22 +36,19 @@ class CustomCard extends StatelessWidget {
               ),
               elevation: 10,
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                   
                     Text(
                       product.title.substring(0, 6),
                       style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 16,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 3,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,9 +59,12 @@ class CustomCard extends StatelessWidget {
                             fontSize: 16,
                           ),
                         ),
-                        const Icon(
-                          Icons.favorite,
-                          color: Colors.red,
+                        FavoriteButton(
+                          isFavorite: true,
+                          iconDisabledColor: Colors.white,
+                          valueChanged: (isFavorite) {
+                            print('Is Favorite : $isFavorite');
+                          },
                         ),
                       ],
                     )
@@ -70,28 +73,15 @@ class CustomCard extends StatelessWidget {
               ),
             ),
           ),
-           Positioned(
-            right: -20,
-            top: -100,
+          Positioned(
+            right: 35,
+            top: 10,
             child: Image.network(
-              
-              product.image ,
-              height: 100,
+              product.image,
+              height: 90,
               width: 100,
             ),
           ),
-          // Positioned(
-          //   right: 32,
-          //   top: 15,
-          //   child: Image.network(
-              
-          //     product.image,
-          //     height: 100,
-          //     width: 100,
-          //     fit: BoxFit.fill,
-          //   ),
-          // )
-
         ],
       ),
     );
