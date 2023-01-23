@@ -11,6 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.3.0
+  favorite_button: 
+  json_serializable: 
+
 
 
   cupertino_icons: ^1.0.2
@@ -18,8 +21,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
+  build_runner:
+  json_annotation: 
   flutter_lints: ^2.0.0
 
 
